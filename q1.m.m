@@ -1,19 +1,15 @@
+
 image = rgb2gray(imread('Assign1_imgs/hist_equal.jpg'));
-% imshow(image)
+size(image)
 image2 = rgb2gray(imread('Assign1_imgs/hist_equal2.jpg'));
 [count1, x] = imhist(image);
 [count2, y] = imhist(image2);
+tr = round((cumsum(count1)/sum(count1)) * 255);
+gr = round((cumsum(count2)/sum(count2)) * 255);
 image_size = size(image)
-tr = cumsum(count1);
-tr = (tr/sum(count1)) * 255;
-tr = round(tr);
-tr = cumsum(count2);
-tr = (gr/sum(count2)) * 255;
-tr = round(gr);
 op = zeros(image_size(1),image_size(2));
 
-
-invt = ones(1,256) * (-1);
+invt = ones(256) * (-1);
 
 for i = 1:image_size(1)
     for j = 1:image_size(2)
@@ -21,8 +17,7 @@ for i = 1:image_size(1)
         if invt(x+1) == -1
             invt(x+1) = findinv(x+1, tr, gr);
         end
-        op(i,j) = invt(x+1);
+        op(i,j) = invt(x);
     end
 end
-invt
-imshow(uint8(op))
+
