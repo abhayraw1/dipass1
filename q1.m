@@ -6,6 +6,9 @@ tr = (cumsum(count1)/sum(count1)) * 255
 sr = (cumsum(count2)/sum(count2)) * 255
 image_size = size(image)
 op = zeros(image_size(1:2))
+closeness = [0:255]
+closeness(2,:) = zeros(256)
+closeness(1,:) = a 
 
 for i = 1:image_size(1):
     for j = 1:image_size(2):
