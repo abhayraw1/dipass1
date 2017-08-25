@@ -1,0 +1,5 @@
+image = imread('Assign1_imgs/hist_equal.jpg')
+image2 = imread('Assign_imgs/hist_equal2.jpg')
+[count1, x] = imhist(rgb2gray(image))
+[count2, y] = imhist(rgb2gray(image))
+tr = cumsum(
